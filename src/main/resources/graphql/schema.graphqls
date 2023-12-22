@@ -1,21 +1,62 @@
 type Query {
     findCustomerById(id: String!): Customer
     findAllCustomers:[Customer]
+
+    getAllTransactions: [Transaction]
+    getTransactionsByStatus(status: TransactionStatus!): [Transaction]
+    getTransactionsByDateRange(startDate: String!, endDate: String!): [Transaction]
+    getTotalTransactionsByCustomer(customerId: ID!): Int
+    getLatestTransactionByCustomer(customerId: ID!): Transaction
 }
 
 type Mutation {
-    saveCustomer(inputCustomer : InputSaveCustomer): Customer
+    saveTransaction(customerId: String, input : InputSaveTransaction!): Transaction
+    saveCustomer(inputCustomer : InputSaveCustomer!): Customer
     deleteCustomerById(id: String!): String
     updateCustomerById(id: String!, customer: InputUpdateCustomer): Customer
 }
 
 type Customer {
-    id: ID!
+    id: ID
     name: String!
     lastName: String!
     email: String!
     documentNumber: String!
-    dateOfBirth: String
+    dateOfBirth: String!
+    createdDate: String
+    lastModifiedDate: String
+    address: Address
+    transactions: [Transaction]
+}
+
+type Address {
+    id: ID
+    street: String!
+    city: String!
+    country: String!
+    postalCode: String!
+}
+
+type Transaction {
+    id: ID!
+    amount: Float!
+    currencyFrom: String!
+    currencyTo: String!
+    status: TransactionStatus!
+    customer: Customer!
+}
+
+enum TransactionStatus {
+    PENDING
+    COMPLETED
+    REJECTED
+}
+
+input InputSaveAddress {
+    street: String!
+    city: String!
+    country: String!
+    postalCode: String!
 }
 
 input InputSaveCustomer {
@@ -24,6 +65,13 @@ input InputSaveCustomer {
     documentNumber: String!
     email: String!
     dateOfBirth: String!
+    address: InputSaveAddress!
+}
+
+input InputSaveTransaction {
+    amount: Float!
+    currencyFrom: String!
+    currencyTo: String!
 }
 
 input InputUpdateCustomer {

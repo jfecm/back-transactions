@@ -9,9 +9,20 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Base service implementation providing common CRUD operations for entities.
+ *
+ * @param <E> The type of entity.
+ * @param <I> The type of entity ID.
+ */
 public abstract class BaseServiceImpl<E extends BaseEntity, I extends Serializable> implements BaseService<E, I> {
     protected BaseRepository<E, I> baseRepository;
 
+    /**
+     * Constructs a new {@code BaseServiceImpl} with the specified repository.
+     *
+     * @param baseRepository The repository for the entity type.
+     */
     protected BaseServiceImpl(BaseRepository<E, I> baseRepository) {
         this.baseRepository = baseRepository;
     }

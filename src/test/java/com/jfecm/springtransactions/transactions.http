@@ -1,0 +1,26 @@
+### Get All Transactions
+GET http://127.0.0.1:8080/api/v1/transactions
+
+### Get Transaction by ID
+GET http://127.0.0.1:8080/api/v1/transaction/{id}
+
+### Create New Transaction
+POST http://127.0.0.1:8080/api/v1/transactions
+Content-Type: application/json
+
+{
+  "amount": 100.0,
+  "currencyFrom": "USD",
+  "currencyTo": "EUR"
+}
+
+### Update Transaction
+PUT http://127.0.0.1:8080/api/v1/transaction/{id}
+Content-Type: application/json
+
+{
+  "amount": 150.0
+}
+
+### Delete Transaction
+DELETE http://127.0.0.1:8080/api/v1/transaction/{id}

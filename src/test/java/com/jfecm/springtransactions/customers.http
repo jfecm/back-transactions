@@ -1,0 +1,34 @@
+### Get All Customers
+GET http://127.0.0.1:8080/api/v1/customers
+
+### Get Customer by ID
+GET http://127.0.0.1:8080/api/v1/customer/{id}
+
+### Create New Customer
+POST http://127.0.0.1:8080/api/v1/customers
+Content-Type: application/json
+
+{
+  "name": "John",
+  "lastName": "Doe",
+  "documentNumber": "123456789",
+  "email": "john.doe@example.com",
+  "dateOfBirth": "1990-01-01",
+  "address": {
+    "street": "123 Main St",
+    "city": "City ville",
+    "country": "Country land",
+    "postalCode": "12345"
+  }
+}
+
+### Update Customer
+PUT http://127.0.0.1:8080/api/v1/customer/{id}
+Content-Type: application/json
+
+{
+  "name": "Updated John"
+}
+
+### Delete Customer
+DELETE http://127.0.0.1:8080/api/v1/customer/{id}

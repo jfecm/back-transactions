@@ -2,7 +2,17 @@ package com.jfecm.springtransactions.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
+/**
+ * Represents an address entity.
+ * The fields of the address include:
+ * - {@code street}: The street name of the address.
+ * - {@code city}: The city of the address.
+ * - {@code country}: The country of the address.
+ * - {@code postalCode}: The postal code of the address.
+ */
+@SuperBuilder
 @Setter
 @Getter
 @AllArgsConstructor
